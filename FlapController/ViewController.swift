@@ -9,17 +9,44 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  
+  @IBAction func initFlap(_ sender: Any) {
+    let _ = FlapController.addFlap(delegate: self)
   }
-
 
 }
 
+extension ViewController: FlapControllerDelegate {
+  func flapControllerDidDismiss(_ flapController: FlapController) {
+    print("did dismiss")
+  }
+  
+  func flapControllerDidExpand(_ flapController: FlapController) {
+    print("did expand")
+  }
+}
+
+extension FlapController {
+  
+  static func addFlap(delegate: AnyObject) -> TestFlapViewController {
+    let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+    
+    let itemNavigationController = storyboard
+      .instantiateViewController(withIdentifier: "TestFlapViewController")
+      as! UINavigationController
+    let itemViewController = itemNavigationController.viewControllers.first as! TestFlapViewController
+    itemViewController.view.layoutIfNeeded()
+    
+    let flapController = FlapController(contentViewController: itemNavigationController)
+    flapController.expandsFullscreen = false
+    flapController.delegate = delegate as? FlapControllerDelegate
+    flapController.presentFromViewController(delegate as! UIViewController, animated: true)
+    
+    return itemViewController
+  }
+  
+}

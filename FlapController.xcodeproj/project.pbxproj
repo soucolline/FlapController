@@ -12,6 +12,9 @@
 		EBA606351F39E4AB00E6C0FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA606331F39E4AB00E6C0FF /* Main.storyboard */; };
 		EBA606371F39E4AB00E6C0FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA606361F39E4AB00E6C0FF /* Assets.xcassets */; };
 		EBA6063A1F39E4AB00E6C0FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA606381F39E4AB00E6C0FF /* LaunchScreen.storyboard */; };
+		EBA606421F39E4CA00E6C0FF /* FlapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA606411F39E4CA00E6C0FF /* FlapController.swift */; };
+		EBA606441F39E58C00E6C0FF /* FlapControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA606431F39E58C00E6C0FF /* FlapControllerView.swift */; };
+		EBA606491F39E7E100E6C0FF /* TestFlapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA606481F39E7E100E6C0FF /* TestFlapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		EBA606361F39E4AB00E6C0FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA606391F39E4AB00E6C0FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA6063B1F39E4AB00E6C0FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBA606411F39E4CA00E6C0FF /* FlapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlapController.swift; sourceTree = "<group>"; };
+		EBA606431F39E58C00E6C0FF /* FlapControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlapControllerView.swift; sourceTree = "<group>"; };
+		EBA606481F39E7E100E6C0FF /* TestFlapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFlapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +62,23 @@
 			children = (
 				EBA6062F1F39E4AB00E6C0FF /* AppDelegate.swift */,
 				EBA606311F39E4AB00E6C0FF /* ViewController.swift */,
+				EBA606481F39E7E100E6C0FF /* TestFlapViewController.swift */,
+				EBA606451F39E79200E6C0FF /* Flap */,
 				EBA606331F39E4AB00E6C0FF /* Main.storyboard */,
 				EBA606361F39E4AB00E6C0FF /* Assets.xcassets */,
 				EBA606381F39E4AB00E6C0FF /* LaunchScreen.storyboard */,
 				EBA6063B1F39E4AB00E6C0FF /* Info.plist */,
 			);
 			path = FlapController;
+			sourceTree = "<group>";
+		};
+		EBA606451F39E79200E6C0FF /* Flap */ = {
+			isa = PBXGroup;
+			children = (
+				EBA606411F39E4CA00E6C0FF /* FlapController.swift */,
+				EBA606431F39E58C00E6C0FF /* FlapControllerView.swift */,
+			);
+			name = Flap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +114,7 @@
 					EBA6062B1F39E4AB00E6C0FF = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = XDX42S5M9N;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,7 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBA606321F39E4AB00E6C0FF /* ViewController.swift in Sources */,
+				EBA606441F39E58C00E6C0FF /* FlapControllerView.swift in Sources */,
+				EBA606491F39E7E100E6C0FF /* TestFlapViewController.swift in Sources */,
 				EBA606301F39E4AB00E6C0FF /* AppDelegate.swift in Sources */,
+				EBA606421F39E4CA00E6C0FF /* FlapController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

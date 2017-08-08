@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FlapController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,100 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu8-r2-Fy5">
+                                <rect key="frame" x="112" y="323" width="151" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5y-Jh-rjw">
+                                <rect key="frame" x="161" y="28" width="52" height="30"/>
+                                <state key="normal" title="Expend"/>
+                                <connections>
+                                    <action selector="initFlap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UAz-bb-Kkx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bu8-r2-Fy5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yt2-ar-aJY"/>
+                            <constraint firstItem="q5y-Jh-rjw" firstAttribute="centerX" secondItem="bu8-r2-Fy5" secondAttribute="centerX" id="gdP-pn-IjD"/>
+                            <constraint firstItem="bu8-r2-Fy5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lkb-ve-yhu"/>
+                            <constraint firstItem="q5y-Jh-rjw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="vst-FL-5If"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Test Flap View Controller-->
+        <scene sceneID="7rm-nQ-GtU">
+            <objects>
+                <viewController id="63v-6A-ycK" customClass="TestFlapViewController" customModule="FlapController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ULu-zb-Oqg"/>
+                        <viewControllerLayoutGuide type="bottom" id="8v6-cN-U5m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="akM-tC-hH9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKo-6x-MM2">
+                                <rect key="frame" x="168" y="72" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-N0-rV1">
+                                <rect key="frame" x="20" y="113" width="335" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.52156862749999999" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Njl-pu-vcu"/>
+                                </constraints>
+                                <state key="normal" title="Expand">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="expandFlap:" destination="63v-6A-ycK" eventType="touchUpInside" id="2FS-ki-uLi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tKo-6x-MM2" firstAttribute="centerX" secondItem="akM-tC-hH9" secondAttribute="centerX" id="jIU-FN-cGp"/>
+                            <constraint firstAttribute="trailing" secondItem="WH5-N0-rV1" secondAttribute="trailing" constant="20" id="ku1-Ud-FWe"/>
+                            <constraint firstItem="tKo-6x-MM2" firstAttribute="top" secondItem="ULu-zb-Oqg" secondAttribute="bottom" constant="8" symbolic="YES" id="msZ-1X-VXG"/>
+                            <constraint firstItem="WH5-N0-rV1" firstAttribute="leading" secondItem="akM-tC-hH9" secondAttribute="leading" constant="20" id="qG9-4A-IBy"/>
+                            <constraint firstItem="WH5-N0-rV1" firstAttribute="top" secondItem="tKo-6x-MM2" secondAttribute="bottom" constant="20" id="tEZ-hT-D6L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="X93-js-QOR"/>
+                    <connections>
+                        <outlet property="expandBtn" destination="WH5-N0-rV1" id="Wxy-tJ-fho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7z-ct-eWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1754.4000000000001" y="37.331334332833585"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CNj-GT-AZk">
+            <objects>
+                <navigationController storyboardIdentifier="TestFlapViewController" automaticallyAdjustsScrollViewInsets="NO" id="ary-xh-NZm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vAC-KJ-4Jv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="63v-6A-ycK" kind="relationship" relationship="rootViewController" id="4D0-M8-pBq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l2b-DH-HBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.60000000000002" y="36.431784107946029"/>
         </scene>
     </scenes>
 </document>
