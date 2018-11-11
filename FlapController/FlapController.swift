@@ -31,7 +31,7 @@ open class FlapController: UIViewController {
     case dismissed
   }
   
-  open let contentViewController: UIViewController
+  public let contentViewController: UIViewController
   
   open weak var delegate: FlapControllerDelegate?
   
@@ -106,10 +106,10 @@ public extension FlapController {
   public func presentFromViewController(_ viewController: UIViewController, animated: Bool, expand: Bool = false) {
     self.removeFlapViewControllersFromPresentingViewController(viewController)
     
-    self.willMove(toParentViewController: viewController)
-    viewController.addChildViewController(self)
+    self.willMove(toParent: viewController)
+    viewController.addChild(self)
     viewController.view.addSubview(self.view)
-    self.didMove(toParentViewController: viewController)
+    self.didMove(toParent: viewController)
     
     viewController.view.addConstraints(
       NSLayoutConstraint
@@ -132,7 +132,7 @@ public extension FlapController {
     }
   }
   
-  public func expand(animated: Bool, velocity: CGFloat, completion: ((Void) -> Void)? = nil) {
+  public func expand(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .expanded
     
     let offset: CGFloat
@@ -154,7 +154,7 @@ public extension FlapController {
     })
   }
   
-  public func compress(animated: Bool, velocity: CGFloat, completion: ((Void) -> Void)? = nil) {
+  public func compress(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .compressed
     
     self.transform(
@@ -169,7 +169,7 @@ public extension FlapController {
     })
   }
   
-  public func dismiss(animated: Bool, velocity: CGFloat, completion: ((Void) -> Void)? = nil) {
+  public func dismiss(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .dismissed
     
     self.transform(
@@ -182,14 +182,14 @@ public extension FlapController {
       completion: {
         self.delegate?.flapControllerDidDismiss?(self)
         
-        self.willMove(toParentViewController: nil)
+        self.willMove(toParent: nil)
         self.view.removeFromSuperview()
-        self.removeFromParentViewController()
-        self.didMove(toParentViewController: self)
+        self.removeFromParent()
+        self.didMove(toParent: self)
     })
   }
   
-  public func transform(animated: Bool, animation: @escaping (Void) -> Void, completion: ((Void) -> Void)?) {
+  public func transform(animated: Bool, animation: @escaping () -> Void, completion: (() -> Void)?) {
     self.view.layoutIfNeeded()
     
     UIView.animate(
@@ -212,12 +212,12 @@ public extension FlapController {
 private extension FlapController {
   
   func setupContentViewController() {
-    self.contentViewController.willMove(toParentViewController: self)
-    self.addChildViewController(self.contentViewController)
+    self.contentViewController.willMove(toParent: self)
+    self.addChild(self.contentViewController)
     self.contentViewController.view.tag = FlapControllerView.FlapControllerContentViewTag
     self.view.addSubview(self.contentViewController.view)
-    self.view.bringSubview(toFront: self.contentViewController.view)
-    self.contentViewController.didMove(toParentViewController: self)
+    self.view.bringSubviewToFront(self.contentViewController.view)
+    self.contentViewController.didMove(toParent: self)
     
     self.contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
     self.contentViewController.view.layer.cornerRadius = 8
@@ -408,7 +408,7 @@ private extension FlapController {
   }
   
   func removeFlapViewControllersFromPresentingViewController(_ viewController: UIViewController) {
-    for viewController in viewController.childViewControllers {
+    for viewController in viewController.children {
       if let viewController = viewController as? FlapController {
         viewController.dismiss(animated: true, velocity: 0)
       }
