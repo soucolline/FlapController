@@ -43,8 +43,8 @@ open class FlapController: UIViewController {
   open var animationDuration: TimeInterval = 0.4
   open var shadowView: UIView?
   open var toggleView: UIView?
-  open var blurBackgroundView: UIVisualEffectView?
-  
+  open var blurBackgroundView: UIView?
+
   open var expandsFullscreen: Bool = true {
     didSet {
       if self.state == .expanded {
@@ -95,7 +95,7 @@ open class FlapController: UIViewController {
     self.view = flapControllerView
     
     self.setupGestures()
-    //self.setupBlurBackgroundView()
+    self.setupBlurBackgroundView()
     self.setupContentViewController()
   }
   
@@ -103,7 +103,7 @@ open class FlapController: UIViewController {
 
 public extension FlapController {
   
-  public func presentFromViewController(_ viewController: UIViewController, animated: Bool, expand: Bool = false) {
+  func presentFromViewController(_ viewController: UIViewController, animated: Bool, expand: Bool = false) {
     self.removeFlapViewControllersFromPresentingViewController(viewController)
     
     self.willMove(toParent: viewController)
@@ -132,7 +132,7 @@ public extension FlapController {
     }
   }
   
-  public func expand(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
+  func expand(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .expanded
     
     let offset: CGFloat
@@ -154,14 +154,14 @@ public extension FlapController {
     })
   }
   
-  public func compress(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
+  func compress(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .compressed
     
     self.transform(
       animated: animated,
       animation: {
         self.flapContentViewTopConstraint.constant = self.minimumOffset
-        self.blurBackgroundView?.alpha = 0
+        //self.blurBackgroundView?.alpha = 0
         self.view.layoutIfNeeded()
     },
       completion: {
@@ -169,7 +169,7 @@ public extension FlapController {
     })
   }
   
-  public func dismiss(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
+  func dismiss(animated: Bool, velocity: CGFloat, completion: (() -> Void)? = nil) {
     self.state = .dismissed
     
     self.transform(
@@ -189,7 +189,7 @@ public extension FlapController {
     })
   }
   
-  public func transform(animated: Bool, animation: @escaping () -> Void, completion: (() -> Void)?) {
+  func transform(animated: Bool, animation: @escaping () -> Void, completion: (() -> Void)?) {
     self.view.layoutIfNeeded()
     
     UIView.animate(
@@ -265,63 +265,6 @@ private extension FlapController {
         constant: 0))
     
     self.setupToggleView()
-    self.setupShadowView()
-  }
-  
-  func setupShadowView() {
-    let shadowView = UIView()
-    shadowView.translatesAutoresizingMaskIntoConstraints = false
-    shadowView.backgroundColor = UIColor.white
-    shadowView.layer.shadowColor = UIColor.black.cgColor
-    shadowView.layer.shadowRadius = 5
-    shadowView.layer.shadowOpacity = 0.3
-    shadowView.layer.cornerRadius = 8
-    shadowView.layer.shadowOffset = CGSize(width: 3, height: -3)
-    
-    self.shadowView = shadowView
-    
-    self.view.insertSubview(
-      shadowView,
-      belowSubview: self.contentViewController.view)
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: shadowView,
-        attribute: .height,
-        relatedBy: .equal,
-        toItem: nil,
-        attribute: .notAnAttribute,
-        multiplier: 1,
-        constant: 10))
-    
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: shadowView,
-        attribute: .width,
-        relatedBy: .equal,
-        toItem: self.contentViewController.view,
-        attribute: .width,
-        multiplier: 1,
-        constant: 0))
-    
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: shadowView,
-        attribute: .centerX,
-        relatedBy: .equal,
-        toItem: self.contentViewController.view,
-        attribute: .centerX,
-        multiplier: 1,
-        constant: 0))
-    
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: shadowView,
-        attribute: .top,
-        relatedBy: .equal,
-        toItem: self.contentViewController.view,
-        attribute: .top,
-        multiplier: 1,
-        constant: 0))
   }
   
   func setupToggleView() {
@@ -377,26 +320,13 @@ private extension FlapController {
   }
   
   func setupBlurBackgroundView() {
-    let blurEffect = UIBlurEffect(style: .dark)
-    let blurBackgroundView = UIVisualEffectView(effect: blurEffect)
-    blurBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.blurBackgroundView = blurBackgroundView
-    
-    self.view.addSubview(blurBackgroundView)
-    self.view.addConstraints(
-      NSLayoutConstraint
-        .constraints(withVisualFormat: "H:|[blurView]|",
-                                     options: [],
-                                     metrics: nil,
-                                     views: ["blurView": blurBackgroundView]))
-    
-    self.view.addConstraints(
-      NSLayoutConstraint
-        .constraints(withVisualFormat: "V:|[blurView]|",
-                                     options: [],
-                                     metrics: nil,
-                                     views: ["blurView": blurBackgroundView]))
+    guard let parentView = self.parent?.view else { return }
+
+    let backgroundView = UIView(frame: parentView.frame)
+    backgroundView.backgroundColor = UIColor.gray
+
+    self.blurBackgroundView = backgroundView
+    self.view.addSubview(backgroundView)
   }
   
   func setupGestures() {
@@ -460,7 +390,7 @@ public extension FlapController {
     case .changed:
       guard !self.panEnable else { return }
       self.flapContentViewTopConstraint.constant = self.panGestureStartingY - translation.y
-      self.blurBackgroundView?.alpha = self.flapContentViewTopConstraint.constant / self.maximumOffset
+      //self.blurBackgroundView?.alpha = self.flapContentViewTopConstraint.constant / self.maximumOffset
       self.delegate?.flapControllerDidPan?(self)
     case .ended:
       // If constant reaches bottom limit, dismiss
@@ -503,6 +433,8 @@ public extension FlapController {
           [.compressed, .expanded],
           withVelocity: velocityAbs)
       }
+    @unknown default:
+        fatalError()
     }
   }
   
