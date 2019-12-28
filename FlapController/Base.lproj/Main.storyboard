@@ -49,7 +49,7 @@
         <!--Test Flap View Controller-->
         <scene sceneID="7rm-nQ-GtU">
             <objects>
-                <viewController id="63v-6A-ycK" customClass="TestFlapViewController" customModule="FlapController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestFlapViewController" id="63v-6A-ycK" customClass="TestFlapViewController" customModule="FlapController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ULu-zb-Oqg"/>
                         <viewControllerLayoutGuide type="bottom" id="8v6-cN-U5m"/>
@@ -59,13 +59,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKo-6x-MM2">
-                                <rect key="frame" x="168" y="52" width="39" height="21"/>
+                                <rect key="frame" x="168" y="50" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-N0-rV1">
-                                <rect key="frame" x="20" y="93" width="335" height="50"/>
+                                <rect key="frame" x="20" y="91" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.52156862749999999" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Njl-pu-vcu"/>
@@ -82,7 +82,7 @@
                         <constraints>
                             <constraint firstItem="tKo-6x-MM2" firstAttribute="centerX" secondItem="akM-tC-hH9" secondAttribute="centerX" id="jIU-FN-cGp"/>
                             <constraint firstAttribute="trailing" secondItem="WH5-N0-rV1" secondAttribute="trailing" constant="20" id="ku1-Ud-FWe"/>
-                            <constraint firstItem="tKo-6x-MM2" firstAttribute="top" secondItem="ULu-zb-Oqg" secondAttribute="bottom" constant="8" symbolic="YES" id="msZ-1X-VXG"/>
+                            <constraint firstItem="tKo-6x-MM2" firstAttribute="top" secondItem="ULu-zb-Oqg" secondAttribute="bottom" constant="50" id="msZ-1X-VXG"/>
                             <constraint firstItem="WH5-N0-rV1" firstAttribute="leading" secondItem="akM-tC-hH9" secondAttribute="leading" constant="20" id="qG9-4A-IBy"/>
                             <constraint firstItem="WH5-N0-rV1" firstAttribute="top" secondItem="tKo-6x-MM2" secondAttribute="bottom" constant="20" id="tEZ-hT-D6L"/>
                         </constraints>
@@ -94,25 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7z-ct-eWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754.4000000000001" y="37.331334332833585"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CNj-GT-AZk">
-            <objects>
-                <navigationController storyboardIdentifier="TestFlapViewController" automaticallyAdjustsScrollViewInsets="NO" id="ary-xh-NZm" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="vAC-KJ-4Jv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="63v-6A-ycK" kind="relationship" relationship="rootViewController" id="4D0-M8-pBq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l2b-DH-HBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="813.60000000000002" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1430" y="50"/>
         </scene>
     </scenes>
 </document>

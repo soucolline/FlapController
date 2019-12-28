@@ -21,9 +21,8 @@ class TestFlapViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
-    guard let flapController = navigationController?.parent as? FlapController
-      else { return }
-    
+    guard let flapController = self.parent as? FlapController else { return }
+
     flapController.expandsFullscreen = false
     flapController.maximumOffset = self.view.bounds.minY + 330
     flapController.minimumOffset = self.view.bounds.minY + 150
@@ -32,8 +31,7 @@ class TestFlapViewController: UIViewController {
   }
   
   @IBAction func expandFlap(_ sender: Any) {
-    guard let flapController = navigationController?.parent as? FlapController
-      else { return }
+    guard let flapController = self.parent as? FlapController else { return }
     
     flapController.expand(animated: true, velocity: 10)
   }

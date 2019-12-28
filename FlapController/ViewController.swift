@@ -35,13 +35,13 @@ extension FlapController {
   static func addFlap(delegate: AnyObject) -> TestFlapViewController {
     let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
     
-    let itemNavigationController = storyboard
+    let itemViewController = storyboard
       .instantiateViewController(withIdentifier: "TestFlapViewController")
-      as! UINavigationController
-    let itemViewController = itemNavigationController.viewControllers.first as! TestFlapViewController
+      as! TestFlapViewController
+    //let itemViewController = itemNavigationController.viewControllers.first as! TestFlapViewController
     itemViewController.view.layoutIfNeeded()
     
-    let flapController = FlapController(contentViewController: itemNavigationController)
+    let flapController = FlapController(contentViewController: itemViewController)
     flapController.expandsFullscreen = false
     flapController.delegate = delegate as? FlapControllerDelegate
     flapController.presentFromViewController(delegate as! UIViewController, animated: true)

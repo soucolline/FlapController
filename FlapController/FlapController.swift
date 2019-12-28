@@ -161,7 +161,7 @@ public extension FlapController {
       animated: animated,
       animation: {
         self.flapContentViewTopConstraint.constant = self.minimumOffset
-        //self.blurBackgroundView?.alpha = 0
+        self.blurBackgroundView?.alpha = 1
         self.view.layoutIfNeeded()
     },
       completion: {
@@ -287,7 +287,7 @@ private extension FlapController {
         attribute: .notAnAttribute,
         multiplier: 1,
         constant: 42))
-    
+
     self.view.addConstraint(
       NSLayoutConstraint(
         item: toggleView,
@@ -297,7 +297,7 @@ private extension FlapController {
         attribute: .notAnAttribute,
         multiplier: 1,
         constant: 4))
-    
+
     self.view.addConstraint(
       NSLayoutConstraint(
         item: toggleView,
@@ -307,7 +307,7 @@ private extension FlapController {
         attribute: .top,
         multiplier: 1,
         constant: 10))
-    
+
     self.view.addConstraint(
       NSLayoutConstraint(
         item: toggleView,
@@ -316,7 +316,7 @@ private extension FlapController {
         toItem: self.contentViewController.view,
         attribute: .centerX,
         multiplier: 1,
-        constant: 10))
+        constant: 0))
   }
   
   func setupBlurBackgroundView() {
@@ -326,6 +326,7 @@ private extension FlapController {
     backgroundView.backgroundColor = UIColor.gray
 
     self.blurBackgroundView = backgroundView
+    self.blurBackgroundView?.alpha = 0
     self.view.addSubview(backgroundView)
   }
   
