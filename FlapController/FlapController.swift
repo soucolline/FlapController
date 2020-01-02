@@ -263,60 +263,6 @@ private extension FlapController {
         attribute: .height,
         multiplier: 1,
         constant: 0))
-    
-    self.setupToggleView()
-  }
-  
-  func setupToggleView() {
-    let toggleView = UIView()
-    toggleView.backgroundColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
-    toggleView.translatesAutoresizingMaskIntoConstraints = false
-    toggleView.layer.cornerRadius = 2
-    
-    self.toggleView = toggleView
-    
-    self.view.insertSubview(
-      toggleView,
-      aboveSubview: self.contentViewController.view)
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: toggleView,
-        attribute: .width,
-        relatedBy: .equal,
-        toItem: nil,
-        attribute: .notAnAttribute,
-        multiplier: 1,
-        constant: 42))
-
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: toggleView,
-        attribute: .height,
-        relatedBy: .equal,
-        toItem: nil,
-        attribute: .notAnAttribute,
-        multiplier: 1,
-        constant: 4))
-
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: toggleView,
-        attribute: .top,
-        relatedBy: .equal,
-        toItem: self.contentViewController.view,
-        attribute: .top,
-        multiplier: 1,
-        constant: 10))
-
-    self.view.addConstraint(
-      NSLayoutConstraint(
-        item: toggleView,
-        attribute: .centerX,
-        relatedBy: .equal,
-        toItem: self.contentViewController.view,
-        attribute: .centerX,
-        multiplier: 1,
-        constant: 0))
   }
   
   func setupBlurBackgroundView() {
