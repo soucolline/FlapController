@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9C6D99823BE224B0043F56C /* FlapControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6D99723BE224B0043F56C /* FlapControllerFactory.swift */; };
 		EBA606301F39E4AB00E6C0FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA6062F1F39E4AB00E6C0FF /* AppDelegate.swift */; };
 		EBA606321F39E4AB00E6C0FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA606311F39E4AB00E6C0FF /* ViewController.swift */; };
 		EBA606351F39E4AB00E6C0FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA606331F39E4AB00E6C0FF /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9C6D99723BE224B0043F56C /* FlapControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlapControllerFactory.swift; sourceTree = "<group>"; };
 		EBA6062C1F39E4AB00E6C0FF /* FlapController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlapController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA6062F1F39E4AB00E6C0FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA606311F39E4AB00E6C0FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA606411F39E4CA00E6C0FF /* FlapController.swift */,
+				E9C6D99723BE224B0043F56C /* FlapControllerFactory.swift */,
 				EBA606431F39E58C00E6C0FF /* FlapControllerView.swift */,
 			);
 			name = Flap;
@@ -159,6 +162,7 @@
 				EBA606321F39E4AB00E6C0FF /* ViewController.swift in Sources */,
 				EBA606441F39E58C00E6C0FF /* FlapControllerView.swift in Sources */,
 				EBA606491F39E7E100E6C0FF /* TestFlapViewController.swift in Sources */,
+				E9C6D99823BE224B0043F56C /* FlapControllerFactory.swift in Sources */,
 				EBA606301F39E4AB00E6C0FF /* AppDelegate.swift in Sources */,
 				EBA606421F39E4CA00E6C0FF /* FlapController.swift in Sources */,
 			);

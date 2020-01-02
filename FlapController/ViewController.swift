@@ -15,7 +15,10 @@ class ViewController: UIViewController {
   }
   
   @IBAction func initFlap(_ sender: Any) {
-    let _ = FlapController.addFlap(delegate: self)
+    FlapControllerFactory.createFlapController(
+      from: TestFlapViewController.self,
+      delegate: self
+    )
   }
 
 }
@@ -28,25 +31,4 @@ extension ViewController: FlapControllerDelegate {
   func flapControllerDidExpand(_ flapController: FlapController) {
     print("did expand")
   }
-}
-
-extension FlapController {
-  
-  static func addFlap(delegate: AnyObject) -> TestFlapViewController {
-    let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-    
-    let itemViewController = storyboard
-      .instantiateViewController(withIdentifier: "TestFlapViewController")
-      as! TestFlapViewController
-    //let itemViewController = itemNavigationController.viewControllers.first as! TestFlapViewController
-    itemViewController.view.layoutIfNeeded()
-    
-    let flapController = FlapController(contentViewController: itemViewController)
-    flapController.expandsFullscreen = false
-    flapController.delegate = delegate as? FlapControllerDelegate
-    flapController.presentFromViewController(delegate as! UIViewController, animated: true)
-    
-    return itemViewController
-  }
-  
 }
