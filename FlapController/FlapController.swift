@@ -89,7 +89,7 @@ open class FlapController: UIViewController {
   override open func loadView() {
     let flapControllerView = FlapControllerView()
     flapControllerView.translatesAutoresizingMaskIntoConstraints = false
-    flapControllerView.forwardsTouches = true
+    flapControllerView.forwardsTouches = false
     flapControllerView.flapState = self.state
     
     self.view = flapControllerView
@@ -325,9 +325,15 @@ private extension FlapController {
     let backgroundView = UIView(frame: parentView.frame)
     backgroundView.backgroundColor = UIColor.gray
 
+
     self.blurBackgroundView = backgroundView
-    self.blurBackgroundView?.alpha = 0
+    self.blurBackgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissFlapController)))
+
     self.view.addSubview(backgroundView)
+  }
+
+  @objc func dismissFlapController() {
+    self.dismiss(animated: true, velocity: 0.5)
   }
   
   func setupGestures() {
