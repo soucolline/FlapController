@@ -116,14 +116,14 @@ public extension FlapController {
         .constraints(withVisualFormat: "H:|[view]|",
                                      options: [],
                                      metrics: nil,
-                                     views: ["view": self.view]))
+                                     views: ["view": self.view as Any]))
     
     viewController.view.addConstraints(
       NSLayoutConstraint
         .constraints(withVisualFormat: "V:|[view]|",
                                      options: [],
                                      metrics: nil,
-                                     views: ["view": self.view]))
+                                     views: ["view": self.view as Any]))
     
     if expand {
       self.expand(animated: animated, velocity: 0)
@@ -236,7 +236,7 @@ private extension FlapController {
     
     self.view.addConstraint(
       NSLayoutConstraint(
-        item: self.contentViewController.view,
+        item: self.contentViewController.view as Any,
         attribute: .centerX,
         relatedBy: .equal,
         toItem: self.view,
@@ -246,7 +246,7 @@ private extension FlapController {
     
     self.view.addConstraint(
       NSLayoutConstraint(
-        item: self.contentViewController.view,
+        item: self.contentViewController.view as Any,
         attribute: .width,
         relatedBy: .equal,
         toItem: self.view,
@@ -256,7 +256,7 @@ private extension FlapController {
     
     self.view.addConstraint(
       NSLayoutConstraint(
-        item: self.contentViewController.view,
+        item: self.contentViewController.view as Any,
         attribute: .height,
         relatedBy: .equal,
         toItem: self.view,
